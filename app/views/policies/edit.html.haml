@@ -6,20 +6,20 @@
   %h1.col-md-9
     = yield :title
 
-%h2 Policy title and text
+%h2 Issue title and text
 
 = simple_form_for @policy do |f|
   = f.error_notification
   .form-group= f.input :name, label: 'If you are for'
-  .form-group= f.input :description, label: 'you believe that', hint: 'From the text, everyone should be able to agree which way the policy votes in each division'
+  .form-group= f.input :description, label: 'you believe that', hint: 'From the text, everyone should be able to agree which way the issue votes in each division'
   .checkbox
     %label
       %input#provisional{name: "provisional", type: "checkbox", value: "provisional", checked: @policy.provisional?}
-      Draft policy
+      Draft issue
     %p.help-block
-      'draft' means the policy is not yet complete or consistent enough to display publicly
+      'draft' means the issue is not yet complete or consistent enough to display publicly
   %input.submit-policy.btn.btn-primary{accesskey: "S", name: "submit", type: "submit", value: "Save title and text"}/
   = link_to "Cancel", :back, class: "btn btn-default"
 
-%h2 Votes related to this policy
+%h2 Votes related to this issue
 = render 'division_edit_instructions'
