@@ -1,0 +1,10 @@
+- content_for :title, @house ? members_type(@house) : members_type("all")
+- set_meta_tags description: "A list of the people who vote as #{@house} on behalf of #{@electorate} in Parliament."
+
+- content_for :header do
+  .section-header.clearfix
+    .page-header.container
+      %h1= yield :title
+      %p.lead #{@members.count} #{members_type_long(@house)} for #{@electorate}
+
+= render "members", members: @members, house: @house

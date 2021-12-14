@@ -55,6 +55,15 @@ class MembersController < ApplicationController
     end
   end
 
+  def electorate
+    @house = params[:house]
+    @electorate = params[:mpc].gsub("_", " ")
+    members = Member.current
+    members = members.in_house(@house)
+    members = members.where(constituency: @electorate)
+    @members = members
+  end
+
   def friends
     electorate = params[:mpc].gsub("_", " ")
     name = params[:mpn].gsub("_", " ")
